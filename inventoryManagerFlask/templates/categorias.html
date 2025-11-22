@@ -14,20 +14,19 @@
     <!-- menu principal -->
     <header>
         <nav>
-            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
-            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
-            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
-            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
-            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
-            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+            <li><a href="{{ url_for('main.paginaprincipal') }}" class="navbarLink">Página principal</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
         </nav>
     </header>
 
     <!-- parte geral da página -->
-    <div>
+    <div class="containerGeneral">
 
         <!-- formulário para cadastrar categoria -->
-        <form action="/cadastrar-categoria" method="POST">
+        <form action="/cadastrar-categoria" method="POST" class="containerAdd">
             <h1>Cadastrar categoria</h1>
 
             <div>
@@ -36,20 +35,15 @@
             </div>
 
             <button type="submit">Confirmar</button>
-
-            <!-- link para exibir todas -->
-            <a href="{{ url_for('cat.categorias') }}">Exibir todas categorias</a>
         </form>
 
         <!-- área de pesquisa -->
         <div>
 
             <!-- pesquisa por ID -->
-            <form action="/pesquisar-categoria-id" method="POST">
-                <h1>Buscar categoria</h1>
-
+            <form action="/pesquisar-categoria-id" method="POST" class="containerSearchId">
                 <div>
-                    <label>Pesquisa por ID</label>
+                    <label>Buscar por ID</label>
                     <input type="number" name="id" placeholder="Digite o ID da categoria">
                 </div>
 
@@ -57,9 +51,9 @@
             </form>
 
             <!-- pesquisa por nome -->
-            <form action="/pesquisar-categoria-nome" method="POST">
+            <form action="/pesquisar-categoria-nome" method="POST" class="containerSearchName">
                 <div>
-                    <label>Pesquisa por nome</label>
+                    <label>Buscar por nome</label>
                     <input type="text" name="nome" placeholder="Digite o nome da categoria">
                 </div>
 
@@ -67,13 +61,14 @@
             </form>
         </div>
     </div>
-
+    <!-- link para exibir todas -->
+    <a href="{{ url_for('cat.categorias') }}">Exibir todas categorias</a>
     <!-- tabela com resultados -->
     <table>
         <tr>
-            <th>ID</th>
-            <th>CATEGORIA</th>
-            <th>AÇÃO</th>
+            <th class="tableTopID">ID</th>
+            <th class="tableTopCategory">CATEGORIA</th>
+            <th class="tableTopAction">AÇÃO</th>
         </tr>
 
         {% for cat in categorias %}

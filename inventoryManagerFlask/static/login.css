@@ -1,3 +1,15 @@
+@keyframes animacao {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 body {
     margin: 0;
     background-color: rgb(39, 39, 49);
@@ -71,8 +83,10 @@ input:not(:placeholder-shown) {
 }
 
 .containerWelcome {
-    background: #522A92;
-    box-shadow: inset 6px 0 15px #3e1e6e;
+    background: linear-gradient(90deg, #522A92, #684ba4);
+    background-size: 300% 300%;
+    animation: animacao 5s ease infinite;
+    box-shadow: inset 6px 0 15px #4a2581;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,18 +97,22 @@ input:not(:placeholder-shown) {
 }
 
 button {
-    background-color: #522A92;
+    background: linear-gradient(90deg, #522A92, #684ba4);
+    background-size: 300% 300%;
+    animation: animacao 5s ease infinite;
     border: none;
     font-size: 16px;
     color: aliceblue;
     border-radius: 5px;
     margin-top: 10%;
-    padding: 2%;
+    padding: 3%;
     transition: 0.2s ease-in-out;
 }
 
 button:hover {
-    background-color: #6942a8;
+    background: linear-gradient(90deg, #7645c3, #9d7ddc);
+    background-size: 300% 300%;
+    animation: animacao 5s ease infinite;
     transform: scale(1.05);
 }
 
@@ -103,6 +121,7 @@ a {
     width: 100%;
     text-align: center;
     transition: 0.2s ease-in-out;
+    color: #522A92;
 }
 
 a:hover {

@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 # Carrega as variáveis de ambiente do arquivo .env
 load_dotenv()
 
-
-
 def conexao():
     # Abre conexão com o banco de dados MySQL
     conn = mysql.connector.connect(
