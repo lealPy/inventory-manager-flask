@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='categorias.css') }}">
+    <title>Categorias</title>
+</head>
+
+<body>
+
+    <!-- menu principal -->
+    <header>
+        <nav>
+            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+        </nav>
+    </header>
+
+    <!-- parte geral da página -->
+    <div>
+
+        <!-- formulário para cadastrar categoria -->
+        <form action="/cadastrar-categoria" method="POST">
+            <h1>Cadastrar categoria</h1>
+
+            <div>
+                <label>Nome</label>
+                <input type="text" name="nome" placeholder="Insira o nome da categoria" required>
+            </div>
+
+            <button type="submit">Confirmar</button>
+
+            <!-- link para exibir todas -->
+            <a href="{{ url_for('cat.categorias') }}">Exibir todas categorias</a>
+        </form>
+
+        <!-- área de pesquisa -->
+        <div>
+
+            <!-- pesquisa por ID -->
+            <form action="/pesquisar-categoria-id" method="POST">
+                <h1>Buscar categoria</h1>
+
+                <div>
+                    <label>Pesquisa por ID</label>
+                    <input type="number" name="id" placeholder="Digite o ID da categoria">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- pesquisa por nome -->
+            <form action="/pesquisar-categoria-nome" method="POST">
+                <div>
+                    <label>Pesquisa por nome</label>
+                    <input type="text" name="nome" placeholder="Digite o nome da categoria">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- tabela com resultados -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>CATEGORIA</th>
+            <th>AÇÃO</th>
+        </tr>
+
+        {% for cat in categorias %}
+        <tr>
+            <td>{{ cat.IDCATEGORIA }}</td>
+            <td>{{ cat.NOME }}</td>
+            <td>
+                <!-- botão deletar -->
+                <form action="{{ url_for('cat.deletarcategoria', id=cat.IDCATEGORIA) }}" method="GET">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar esta categoria?')">DELETAR</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='editarlote.css') }}">
+    <title>Alterar Lote</title>
+</head>
+
+<body>
+
+    <!-- área principal -->
+    <div>
+
+        <!-- formulário para editar lote -->
+        <form action="{{ url_for('lote.alterarlote', id=lote.IDLOTE) }}" method="POST">
+            <h1>Alterar Lote</h1>
+
+            <!-- campos do formulário -->
+            <div>
+
+                <label>ID Produto</label>
+                <input type="number" name="idproduto" value="{{ lote.IDPRODUTO }}" required>
+
+                <label>ID Fornecedor</label>
+                <input type="number" name="idfornecedor" value="{{ lote.IDFORNECEDOR }}" required>
+
+                <label>Data de Cadastro</label>
+                <input type="date" name="datacadastro" value="{{ lote.DATA_CADASTRO }}" required>
+
+                <label>Data de Validade</label>
+                <input type="date" name="datavalidade" value="{{ lote.DATA_VALIDADE }}" required>
+
+                <label>Número do Lote</label>
+                <input type="text" name="numero" value="{{ lote.NUMERO }}" required>
+
+                <label>Quantidade</label>
+                <input type="number" name="quantidade" value="{{ lote.QUANTIDADE }}">
+
+            </div>
+
+            <!-- botão salvar -->
+            <button type="submit">Salvar alterações</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

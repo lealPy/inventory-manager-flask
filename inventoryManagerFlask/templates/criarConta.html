@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='criarConta.css') }}">
+    <title>Criar conta</title>
+</head>
+
+<body>
+
+    <form action="/criarconta-auth" method="POST">
+        <h1>Crie sua conta</h1>
+
+        <!-- área inputs -->
+        <div>
+            <label>Usuário</label>
+            <input type="text" placeholder="Insira seu usuário" name="usuario" required>
+
+            <label>E-Mail</label>
+            <input type="email" placeholder="Insira seu e-mail" name="email" required>
+
+            <label>Senha</label>
+            <input type="password" placeholder="Insira sua senha" name="senha" required>
+        </div>
+
+        <!-- checkbox termos -->
+        <label for="checkbox">
+            <input type="checkbox" id="checkbox" required>
+            Concordo com os termos de uso.
+        </label>
+
+        <!-- botão confirmar -->
+        <button type="submit">Confirmar</button>
+
+    </form>
+
+</body>
+</html>

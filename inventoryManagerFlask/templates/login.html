@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!-- importa a fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+
+    <!-- formulário de login -->
+    <form action="/login-auth" method="POST">
+
+        <!-- área dos campos -->
+        <div>
+            <h1>Faça login</h1>
+
+            <!-- campo usuário -->
+            <label>Usuário</label>
+            <input type="text" name="usuario" placeholder="Insira seu usuário" required>
+
+            <!-- campo email -->
+            <label>E-Mail</label>
+            <input type="email" name="email" placeholder="Insira seu e-mail" required>
+
+            <!-- campo senha -->
+            <label>Senha</label>
+            <input type="password" name="senha" placeholder="Insira sua senha" required>
+
+            <!-- botão enviar -->
+            <button type="submit">Confirmar</button>
+
+            <!-- link para criar conta -->
+            <a href="{{ url_for('acc.criarconta') }}">Não tem conta? Cadastre-se</a>
+        </div>
+
+        <!-- texto de boas-vindas -->
+        <div>
+            <h2>Bem-vindo(a) de volta!</h2>
+            <h4>Mensagem de boas-vindas ao usuário.</h4>
+        </div>
+
+    </form>
+
+</body>
+</html>

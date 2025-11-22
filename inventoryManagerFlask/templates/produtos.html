@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='produtos.css') }}">
+    <title>Produtos</title>
+</head>
+
+<body>
+
+    <!-- menu principal -->
+    <header>
+        <nav>
+            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+        </nav>
+    </header>
+
+    <!-- container geral -->
+    <div>
+
+        <!-- formulário de cadastro -->
+        <form action="/cadastrar-produtos" method="POST">
+            <h1>Cadastrar produto</h1>
+
+            <div>
+                <label>Produto</label>
+                <input type="text" name="nome" placeholder="Insira o produto" required>
+
+                <label>ID categoria</label>
+                <input type="text" name="idcategoria" placeholder="Insira o ID da categoria" required>
+
+                <label>Descrição</label>
+                <input type="text" name="descricao" placeholder="Insira a descrição do produto" required>
+
+                <label>Controle de validade</label>
+                <input type="text" name="controlevalidade" placeholder="Insira a validade" required>
+
+                <label>Estoque mínimo</label>
+                <input type="number" name="estoqueminimo" placeholder="Insira o estoque mínimo" required>
+            </div>
+
+            <button type="submit">Confirmar</button>
+            <a href="{{ url_for('pro.produtos') }}">Exibir todos produtos</a>
+        </form>
+
+        <!-- área de pesquisa -->
+        <div>
+
+            <!-- buscar por id -->
+            <form action="/pesquisar-produto-id" method="POST">
+                <h1>Buscar produto</h1>
+
+                <div>
+                    <label>Pesquisa por ID</label>
+                    <input type="number" name="id" placeholder="Digite o ID do produto">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- buscar por nome -->
+            <form action="/pesquisar-produto-nome" method="POST">
+                <div>
+                    <label>Pesquisa por nome</label>
+                    <input type="text" name="nome" placeholder="Digite o nome do produto">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- buscar por categoria -->
+            <form action="/pesquisar-produto-categoria" method="POST">
+                <div>
+                    <label>Pesquisa por categoria</label>
+                    <input type="number" name="idcategoria" placeholder="Digite o ID categoria do produto">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- tabela de produtos -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>CATEGORIA</th>
+            <th>PRODUTO</th>
+            <th>DESCRICAO</th>
+            <th>CONTROLE VALIDADE</th>
+            <th>ESTOQUE MINIMO</th>
+            <th>AÇÃO</th>
+        </tr>
+
+        {% for pro in produtos %}
+        <tr>
+            <td>{{ pro.IDPRODUTO }}</td>
+            <td>{{ pro.IDCATEGORIA }}</td>
+            <td>{{ pro.NOME }}</td>
+            <td>{{ pro.DESCRICAO }}</td>
+            <td>{{ pro.CONTROLE_VALIDADE }}</td>
+            <td>{{ pro.ESTOQUE_MINIMO }}</td>
+            <td>
+                <!-- botões de ação -->
+                <form action="{{ url_for('pro.deletarproduto', id=pro.IDPRODUTO) }}" method="GET">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este produto?')">DELETAR</button>
+                </form>
+
+                <form action="{{ url_for('pro.alterarproduto', id=pro.IDPRODUTO) }}" method="GET">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja alterar este produto?')">ALTERAR</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

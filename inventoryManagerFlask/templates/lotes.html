@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lotes</title>
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='lotes.css') }}">
+</head>
+
+<body>
+
+    <!-- Menu superior -->
+    <header>
+        <nav>
+            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+        </nav>
+    </header>
+
+    <!-- Área principal -->
+    <div>
+
+        <!-- Cadastrar lote -->
+        <form action="/cadastrar-lote" method="POST">
+            <h1>Cadastrar lote</h1>
+
+            <label>ID Produto</label>
+            <input type="number" name="idproduto" required placeholder="Insira o ID do produto">
+
+            <label>ID Fornecedor</label>
+            <input type="number" name="idfornecedor" required placeholder="Insira o ID do fornecedor">
+
+            <label>Data de cadastro</label>
+            <input type="date" name="datacadastro" required>
+
+            <label>Data de validade</label>
+            <input type="date" name="datavalidade" required>
+
+            <label>Número do lote</label>
+            <input type="text" name="numero" required placeholder="Ex: L2024-01">
+
+            <label>Quantidade</label>
+            <input type="number" name="quantidade" placeholder="Insira a quantidade">
+
+            <button type="submit">Confirmar</button>
+
+            <a href="{{ url_for('lote.lotes') }}">Exibir todos lotes</a>
+        </form>
+
+        <!-- Pesquisas -->
+        <div>
+
+            <!-- Buscar por ID -->
+            <form action="/pesquisar-lote-id" method="POST">
+                <h1>Buscar lote</h1>
+
+                <label>Pesquisa por ID</label>
+                <input type="number" name="id" placeholder="Digite o ID do lote">
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- Buscar por produto -->
+            <form action="/pesquisar-lote-produto" method="POST">
+                <label>Pesquisa por ID Produto</label>
+                <input type="number" name="idproduto" placeholder="Digite o ID do produto">
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- Buscar por fornecedor -->
+            <form action="/pesquisar-lote-fornecedor" method="POST">
+                <label>Pesquisa por ID Fornecedor</label>
+                <input type="number" name="idfornecedor" placeholder="Digite o ID do fornecedor">
+                <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Tabela de lotes -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ID PRODUTO</th>
+            <th>ID FORNECEDOR</th>
+            <th>DATA CADASTRO</th>
+            <th>DATA VALIDADE</th>
+            <th>NÚMERO</th>
+            <th>QUANTIDADE</th>
+            <th>AÇÃO</th>
+        </tr>
+
+        {% for lot in lotes %}
+        <tr>
+            <td>{{ lot.IDLOTE }}</td>
+            <td>{{ lot.IDPRODUTO }}</td>
+            <td>{{ lot.IDFORNECEDOR }}</td>
+            <td>{{ lot.DATA_CADASTRO }}</td>
+            <td>{{ lot.DATA_VALIDADE }}</td>
+            <td>{{ lot.NUMERO }}</td>
+            <td>{{ lot.QUANTIDADE }}</td>
+
+            <td>
+                <form action="{{ url_for('lote.deletarlote', id=lot.IDLOTE) }}" method="GET">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este lote?')">DELETAR</button>
+                </form>
+
+                <form action="{{ url_for('lote.alterarlote', id=lot.IDLOTE) }}" method="GET">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja alterar este lote?')">ALTERAR</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

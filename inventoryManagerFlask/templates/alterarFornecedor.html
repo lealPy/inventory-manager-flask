@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='editarfornecedor.css') }}">
+    <title>Alterar Fornecedor</title>
+</head>
+
+<body>
+
+    <!-- área principal -->
+    <div>
+
+        <!-- formulário para editar fornecedor -->
+        <form action="{{ url_for('forn.alterarfornecedor', id=fornecedor.IDFORNECEDOR) }}" method="POST">
+            <h1>Alterar fornecedor</h1>
+
+            <!-- campos do formulário -->
+            <div>
+
+                <label>Nome</label>
+                <input type="text" name="nome" value="{{ fornecedor.NOME }}" required>
+
+                <label>Telefone</label>
+                <input type="text" name="telefone" value="{{ fornecedor.TELEFONE }}">
+
+                <label>Email</label>
+                <input type="email" name="email" value="{{ fornecedor.EMAIL }}">
+
+            </div>
+
+            <!-- botão salvar -->
+            <button type="submit">Salvar alterações</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

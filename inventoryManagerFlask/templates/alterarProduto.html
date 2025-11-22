@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='alterarproduto.css') }}">
+    <title>Alterar Produto</title>
+</head>
+
+<body>
+
+    <!-- área principal -->
+    <div>
+
+        <!-- formulário de edição do produto -->
+        <form action="{{ url_for('pro.alterarproduto', id=produto.IDPRODUTO) }}" method="POST">
+            <h1>Alterar produto</h1>
+
+            <!-- campos do formulário -->
+            <div>
+                <label>Produto</label>
+                <input type="text" name="nome" value="{{ produto.NOME }}" required>
+
+                <label>ID categoria</label>
+                <input type="text" name="idcategoria" value="{{ produto.IDCATEGORIA }}" required>
+
+                <label>Descrição</label>
+                <input type="text" name="descricao" value="{{ produto.DESCRICAO }}" required>
+
+                <label>Controle de validade</label>
+                <input type="text" name="controlevalidade" value="{{ produto.CONTROLE_VALIDADE }}" required>
+
+                <label>Estoque mínimo</label>
+                <input type="number" name="estoqueminimo" value="{{ produto.ESTOQUE_MINIMO }}" required>
+            </div>
+
+            <!-- botão salvar -->
+            <button type="submit">Salvar alterações</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

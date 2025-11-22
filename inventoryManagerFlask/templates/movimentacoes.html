@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='movimentacoes.css') }}">
+    <title>Movimentações</title>
+</head>
+
+<body>
+
+    <!-- menu -->
+    <header>
+        <nav>
+            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+        </nav>
+    </header>
+
+    <!-- área geral -->
+    <div>
+
+        <!-- cadastro de movimentação -->
+        <form action="/cadastrar-movimentacao" method="POST">
+            <h1>Cadastrar Movimentação</h1>
+
+            <div>
+                <label>ID Lote</label>
+                <input type="number" name="idlote" required placeholder="Insira o ID do lote">
+
+                <label>ID Usuário</label>
+                <input type="number" name="idusuario" required placeholder="Insira o ID do usuário">
+
+                <label>Data da movimentação</label>
+                <input type="date" name="data" required>
+
+                <label>Tipo</label>
+                <select name="tipo" required>
+                    <option value="">Selecione</option>
+                    <option value="ENTRADA">Entrada</option>
+                    <option value="SAIDA">Saída</option>
+                </select>
+
+                <label>Quantidade</label>
+                <input type="number" name="quantidade" required placeholder="Quantidade">
+
+                <label>Valor unitário</label>
+                <input type="number" step="0.01" name="valor" required placeholder="Ex: 9.99">
+
+                <label>Motivo</label>
+                <input type="text" name="motivo" maxlength="50" required placeholder="Motivo da movimentação">
+            </div>
+
+            <button type="submit">Confirmar</button>
+            <a href="{{ url_for('mov.movimentacoes') }}">Exibir todas movimentações</a>
+        </form>
+
+        <!-- pesquisas -->
+        <div>
+
+            <!-- pesquisa por ID -->
+            <form action="/pesquisar-movimentacao-id" method="POST">
+                <h1>Buscar Movimentação</h1>
+
+                <div>
+                    <label>ID Movimentação</label>
+                    <input type="number" name="id" placeholder="Buscar por ID">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- pesquisa por lote -->
+            <form action="/pesquisar-movimentacao-lote" method="POST">
+                <div>
+                    <label>ID Lote</label>
+                    <input type="number" name="idlote" placeholder="Buscar por ID do lote">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- pesquisa por usuário -->
+            <form action="/pesquisar-movimentacao-usuario" method="POST">
+                <div>
+                    <label>ID Usuário</label>
+                    <input type="number" name="idusuario" placeholder="Buscar por ID do usuário">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- pesquisa por tipo -->
+            <form action="/pesquisar-movimentacao-tipo" method="POST">
+                <div>
+                    <label>Tipo</label>
+                    <select name="tipo">
+                        <option value="">Selecione</option>
+                        <option value="ENTRADA">Entrada</option>
+                        <option value="SAIDA">Saída</option>
+                    </select>
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- tabela -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ID LOTE</th>
+            <th>ID USUÁRIO</th>
+            <th>DATA</th>
+            <th>TIPO</th>
+            <th>QUANTIDADE</th>
+            <th>VALOR UNITÁRIO</th>
+            <th>MOTIVO</th>
+            <th>AÇÃO</th>
+        </tr>
+
+        {% for mov in movimentacoes %}
+        <tr>
+            <td>{{ mov.IDMOVIMENTACAO }}</td>
+            <td>{{ mov.IDLOTE }}</td>
+            <td>{{ mov.IDUSUARIO }}</td>
+            <td>{{ mov.DATA_MOVIMENTACAO }}</td>
+            <td>{{ mov.TIPO }}</td>
+            <td>{{ mov.QUANTIDADE }}</td>
+            <td>{{ mov.VALOR_UNITARIO }}</td>
+            <td>{{ mov.MOTIVO }}</td>
+
+            <td>
+                <!-- deletar -->
+                <form action="{{ url_for('mov.deletarmovimentacao', id=mov.IDMOVIMENTACAO) }}" method="GET">
+                    <button type="submit" onclick="return confirm('Deseja deletar esta movimentação?')">DELETAR</button>
+                </form>
+
+                <!-- alterar -->
+                <form action="{{ url_for('mov.alterarmovimentacao', id=mov.IDMOVIMENTACAO) }}" method="GET">
+                    <button type="submit">ALTERAR</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='paginaPrincipal.css') }}">
+    <title>Página principal</title>
+</head>
+
+<body>
+
+    <!-- menu principal -->
+    <nav>
+        <li><a href="#">Página principal</a></li>
+        <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
+        <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
+        <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
+        <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
+        <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+    </nav>
+
+    <!-- botão de logout -->
+    <a href="{{ url_for('main.logout') }}">Fazer Logout</a>
+
+</body>
+</html>

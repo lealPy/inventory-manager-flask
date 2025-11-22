@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <!-- fonte -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='fornecedores.css') }}">
+    <title>Fornecedores</title>
+</head>
+
+<body>
+
+    <!-- menu -->
+    <header>
+        <nav>
+            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+        </nav>
+    </header>
+
+    <!-- área geral -->
+    <div>
+
+        <!-- cadastro -->
+        <form action="/cadastrar-fornecedor" method="POST">
+            <h1>Cadastrar fornecedor</h1>
+
+            <!-- campos -->
+            <div>
+                <label>Nome</label>
+                <input type="text" name="nome" placeholder="Insira o nome" required>
+
+                <label>Telefone</label>
+                <input type="text" name="telefone" placeholder="Insira o telefone">
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Insira o email">
+            </div>
+
+            <!-- botão enviar -->
+            <button type="submit">Confirmar</button>
+
+            <!-- link listar -->
+            <a href="{{ url_for('forn.fornecedores') }}">Exibir todos fornecedores</a>
+        </form>
+
+        <!-- buscas -->
+        <div>
+
+            <!-- por ID -->
+            <form action="/pesquisar-fornecedor-id" method="POST">
+                <h1>Buscar fornecedor</h1>
+
+                <div>
+                    <label>Pesquisa por ID</label>
+                    <input type="number" name="id" placeholder="Digite o ID do fornecedor">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <!-- por nome -->
+            <form action="/pesquisar-fornecedor-nome" method="POST">
+                <div>
+                    <label>Pesquisa por nome</label>
+                    <input type="text" name="nome" placeholder="Digite o nome do fornecedor">
+                </div>
+
+                <button type="submit">Confirmar</button>
+            </form>
+
+        </div>
+    </div>
+
+    <!-- tabela -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>TELEFONE</th>
+            <th>EMAIL</th>
+            <th>AÇÃO</th>
+        </tr>
+
+        {% for f in fornecedores %}
+        <tr>
+            <td>{{ f.IDFORNECEDOR }}</td>
+            <td>{{ f.NOME }}</td>
+            <td>{{ f.TELEFONE }}</td>
+            <td>{{ f.EMAIL }}</td>
+
+            <td>
+                <!-- botões -->
+                <div>
+                    <form action="{{ url_for('forn.deletarfornecedor', id=f.IDFORNECEDOR) }}" method="GET">
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este fornecedor?')">DELETAR</button>
+                    </form>
+
+                    <form action="{{ url_for('forn.alterarfornecedor', id=f.IDFORNECEDOR) }}" method="GET">
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja alterar este fornecedor?')">ALTERAR</button>
+                    </form>
+                </div>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
