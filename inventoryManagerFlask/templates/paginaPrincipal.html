@@ -13,16 +13,18 @@
 
     <!-- menu principal -->
     <nav>
-        <li><a href="#">Página principal</a></li>
-        <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
-        <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
-        <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
-        <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
-        <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+        <li><a href="{{ url_for('cat.categorias') }}" class="navbarLink">Categorias</a></li>
+        <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
+        <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
+        <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
+        <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
     </nav>
 
+    <!-- mensagem de boas-vindas -->
+    <h1>Bem-vindo de volta, <span>{{ usuario }}</span></h1>
+
     <!-- botão de logout -->
-    <a href="{{ url_for('main.logout') }}">Fazer Logout</a>
+    <a href="{{ url_for('main.logout') }}" class="logoutButton">Fazer Logout</a>
 
 </body>
 </html>

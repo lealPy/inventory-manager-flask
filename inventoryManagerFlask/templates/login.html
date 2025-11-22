@@ -5,6 +5,8 @@
     <title>Login</title>
     <!-- importa a fonte -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    
     <!-- css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
@@ -15,8 +17,8 @@
     <form action="/login-auth" method="POST">
 
         <!-- área dos campos -->
-        <div>
-            <h1>Faça login</h1>
+        <div class="containerInput">
+            <h1>Faça Login</h1>
 
             <!-- campo usuário -->
             <label>Usuário</label>
@@ -38,9 +40,9 @@
         </div>
 
         <!-- texto de boas-vindas -->
-        <div>
-            <h2>Bem-vindo(a) de volta!</h2>
-            <h4>Mensagem de boas-vindas ao usuário.</h4>
+        <div class="containerWelcome">
+            <h2>É ótimo ver você por aqui novamente!</h2>
+            <h4>Faça login para retomar suas atividades.</h4>
         </div>
 
     </form>

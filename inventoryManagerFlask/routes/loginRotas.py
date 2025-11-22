@@ -12,6 +12,7 @@ def login():
 # Autenticação do usuário
 @log.route("/login-auth", methods=['POST'])
 def loginauth():
+    usuario = request.form.get("usuario")
     email = request.form.get("email")
     senha = request.form.get("senha")
 
@@ -28,7 +29,7 @@ def loginauth():
 
         if resultado and check_password_hash(resultado['SENHA'], senha):
             session['usuario'] = resultado['NOME']
-            return redirect(url_for('main.paginaprincipal'))
+            return redirect(url_for('main.paginaprincipal', usuario = usuario))
         else:
             return redirect(url_for('log.login'))
         

@@ -1,4 +1,3 @@
-# Importa ferramentas principais do Flask
 from flask import Flask
 import os
 from dotenv import load_dotenv

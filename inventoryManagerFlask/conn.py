@@ -1,4 +1,3 @@
-# Importa o conector com o banco de dados MySQL
 import mysql.connector
 import os
 from dotenv import load_dotenv
