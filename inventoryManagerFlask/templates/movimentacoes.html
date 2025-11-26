@@ -2,120 +2,129 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <!-- fonte -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-    <!-- css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='movimentacoes.css') }}">
     <title>Movimentações</title>
 </head>
 
 <body>
 
-    <!-- menu -->
-    <header>
-        <nav>
-            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
-            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
-            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
-            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
-            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
-            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+    <!-- NAVBAR PADRÃO -->
+    <header class="header">
+        <nav class="navbar">
+            <li><a href="{{ url_for('main.paginaprincipal') }}" class="navbarLink">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}" class="navbarLink">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
         </nav>
     </header>
 
-    <!-- área geral -->
-    <div>
+    <!-- GRID PRINCIPAL -->
+    <div class="containerGeneral">
 
-        <!-- cadastro de movimentação -->
-        <form action="/cadastrar-movimentacao" method="POST">
-            <h1>Cadastrar Movimentação</h1>
+        <!-- CADASTRAR MOV -->
+        <form action="/cadastrar-movimentacao" method="POST" class="containerAdd cardForm">
+            <h1 class="titleAdd">Cadastrar Movimentação</h1>
 
-            <div>
-                <label>ID Lote</label>
-                <input type="number" name="idlote" required placeholder="Insira o ID do lote">
+            <div class="formGroup">
+                <label class="formLabel">ID Lote</label>
+                <input type="number" name="idlote" class="formInput" placeholder="Insira o ID do lote" required>
+            </div>
 
-                <label>ID Usuário</label>
-                <input type="number" name="idusuario" required placeholder="Insira o ID do usuário">
+            <div class="formGroup">
+                <label class="formLabel">ID Usuário</label>
+                <input type="number" name="idusuario" class="formInput" placeholder="Insira o ID do usuário" required>
+            </div>
 
-                <label>Data da movimentação</label>
-                <input type="date" name="data" required>
+            <div class="formGroup">
+                <label class="formLabel">Data</label>
+                <input type="date" name="data" class="formInput" required>
+            </div>
 
-                <label>Tipo</label>
-                <select name="tipo" required>
+            <div class="formGroup">
+                <label class="formLabel">Tipo</label>
+                <select name="tipo" class="formInput" required>
                     <option value="">Selecione</option>
                     <option value="ENTRADA">Entrada</option>
                     <option value="SAIDA">Saída</option>
                 </select>
-
-                <label>Quantidade</label>
-                <input type="number" name="quantidade" required placeholder="Quantidade">
-
-                <label>Valor unitário</label>
-                <input type="number" step="0.01" name="valor" required placeholder="Ex: 9.99">
-
-                <label>Motivo</label>
-                <input type="text" name="motivo" maxlength="50" required placeholder="Motivo da movimentação">
             </div>
 
-            <button type="submit">Confirmar</button>
-            <a href="{{ url_for('mov.movimentacoes') }}">Exibir todas movimentações</a>
+            <div class="formGroup">
+                <label class="formLabel">Quantidade</label>
+                <input type="number" name="quantidade" class="formInput" placeholder="Quantidade" required>
+            </div>
+
+            <div class="formGroup">
+                <label class="formLabel">Valor Unitário</label>
+                <input type="number" step="0.01" name="valor" class="formInput" placeholder="Ex: 9.99" required>
+            </div>
+
+            <div class="formGroup">
+                <label class="formLabel">Motivo</label>
+                <input type="text" name="motivo" maxlength="50" class="formInput" placeholder="Motivo" required>
+            </div>
+
+            <button type="submit" class="btn btnPrimary">Confirmar</button>
         </form>
 
-        <!-- pesquisas -->
-        <div>
+        <!-- BUSCAS -->
+        <div class="containerSearch">
 
-            <!-- pesquisa por ID -->
-            <form action="/pesquisar-movimentacao-id" method="POST">
-                <h1>Buscar Movimentação</h1>
+            <!-- BUSCAR POR ID -->
+            <form action="/pesquisar-movimentacao-id" method="POST" class="containerSearchId cardForm">
+                <h1 class="titleAdd">Buscar Movimentação</h1>
 
-                <div>
-                    <label>ID Movimentação</label>
-                    <input type="number" name="id" placeholder="Buscar por ID">
+                <div class="formGroup">
+                    <label class="formLabel">ID Movimentação</label>
+                    <input type="number" name="id" class="formInput" placeholder="Buscar por ID">
                 </div>
 
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
-            <!-- pesquisa por lote -->
-            <form action="/pesquisar-movimentacao-lote" method="POST">
-                <div>
-                    <label>ID Lote</label>
-                    <input type="number" name="idlote" placeholder="Buscar por ID do lote">
+            <!-- BUSCAR POR LOTE -->
+            <form action="/pesquisar-movimentacao-lote" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">ID Lote</label>
+                    <input type="number" name="idlote" class="formInput" placeholder="Buscar por ID do lote">
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
-            <!-- pesquisa por usuário -->
-            <form action="/pesquisar-movimentacao-usuario" method="POST">
-                <div>
-                    <label>ID Usuário</label>
-                    <input type="number" name="idusuario" placeholder="Buscar por ID do usuário">
+            <!-- BUSCAR POR USUARIO -->
+            <form action="/pesquisar-movimentacao-usuario" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">ID Usuário</label>
+                    <input type="number" name="idusuario" class="formInput" placeholder="Buscar por ID do usuário">
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
-            <!-- pesquisa por tipo -->
-            <form action="/pesquisar-movimentacao-tipo" method="POST">
-                <div>
-                    <label>Tipo</label>
-                    <select name="tipo">
+            <!-- BUSCAR POR TIPO -->
+            <form action="/pesquisar-movimentacao-tipo" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Tipo</label>
+                    <select name="tipo" class="formInput">
                         <option value="">Selecione</option>
                         <option value="ENTRADA">Entrada</option>
                         <option value="SAIDA">Saída</option>
                     </select>
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
         </div>
     </div>
 
-    <!-- tabela -->
-    <table>
-        <tr>
+    <!-- BOTÃO LISTAR TODOS -->
+    <a href="{{ url_for('mov.movimentacoes') }}" class="showAllLink">Exibir todas movimentações</a>
+
+    <!-- TABELA -->
+    <table class="tableCategories">
+        <tr class="tableRowTop">
             <th>ID</th>
             <th>ID LOTE</th>
             <th>ID USUÁRIO</th>
@@ -128,26 +137,27 @@
         </tr>
 
         {% for mov in movimentacoes %}
-        <tr>
-            <td>{{ mov.IDMOVIMENTACAO }}</td>
-            <td>{{ mov.IDLOTE }}</td>
-            <td>{{ mov.IDUSUARIO }}</td>
-            <td>{{ mov.DATA_MOVIMENTACAO }}</td>
-            <td>{{ mov.TIPO }}</td>
-            <td>{{ mov.QUANTIDADE }}</td>
-            <td>{{ mov.VALOR_UNITARIO }}</td>
-            <td>{{ mov.MOTIVO }}</td>
+        <tr class="tableRow">
+            <td class="tableCell">{{ mov.IDMOVIMENTACAO }}</td>
+            <td class="tableCell">{{ mov.IDLOTE }}</td>
+            <td class="tableCell">{{ mov.IDUSUARIO }}</td>
+            <td class="tableCell">{{ mov.DATA_MOVIMENTACAO }}</td>
+            <td class="tableCell">{{ mov.TIPO }}</td>
+            <td class="tableCell">{{ mov.QUANTIDADE }}</td>
+            <td class="tableCell">{{ mov.VALOR_UNITARIO }}</td>
+            <td class="tableCell">{{ mov.MOTIVO }}</td>
 
-            <td>
-                <!-- deletar -->
+            <td class="tableCell tableActionCell">
+
                 <form action="{{ url_for('mov.deletarmovimentacao', id=mov.IDMOVIMENTACAO) }}" method="GET">
-                    <button type="submit" onclick="return confirm('Deseja deletar esta movimentação?')">DELETAR</button>
+                    <button type="submit" class="btn btnDelete"
+                        onclick="return confirm('Deseja deletar esta movimentação?')">DELETAR</button>
                 </form>
 
-                <!-- alterar -->
                 <form action="{{ url_for('mov.alterarmovimentacao', id=mov.IDMOVIMENTACAO) }}" method="GET">
-                    <button type="submit">ALTERAR</button>
+                    <button type="submit" class="btn btnPrimary">ALTERAR</button>
                 </form>
+
             </td>
         </tr>
         {% endfor %}

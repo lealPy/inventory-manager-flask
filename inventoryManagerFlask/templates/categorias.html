@@ -2,18 +2,15 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <!-- fonte -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='categorias.css') }}">
     <title>Categorias</title>
 </head>
 
 <body>
 
-    <!-- menu principal -->
-    <header>
-        <nav>
+    <header class="header">
+        <nav class="navbar">
             <li><a href="{{ url_for('main.paginaprincipal') }}" class="navbarLink">Página principal</a></li>
             <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
             <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
@@ -22,63 +19,56 @@
         </nav>
     </header>
 
-    <!-- parte geral da página -->
     <div class="containerGeneral">
 
-        <!-- formulário para cadastrar categoria -->
-        <form action="/cadastrar-categoria" method="POST" class="containerAdd">
-            <h1>Cadastrar categoria</h1>
+        <form action="/cadastrar-categoria" method="POST" class="containerAdd cardForm">
+            <h1 class="titleAdd">Cadastrar categoria</h1>
 
-            <div>
-                <label>Nome</label>
-                <input type="text" name="nome" placeholder="Insira o nome da categoria" required>
+            <div class="formGroup">
+                <label class="formLabel">Nome</label>
+                <input type="text" name="nome" class="formInput" placeholder="Insira o nome da categoria" required>
             </div>
 
-            <button type="submit">Confirmar</button>
+            <button type="submit" class="btn btnPrimary">Confirmar</button>
         </form>
 
-        <!-- área de pesquisa -->
-        <div>
+        <div class="containerSearch">
 
-            <!-- pesquisa por ID -->
-            <form action="/pesquisar-categoria-id" method="POST" class="containerSearchId">
-                <div>
-                    <label>Buscar por ID</label>
-                    <input type="number" name="id" placeholder="Digite o ID da categoria">
+            <form action="/pesquisar-categoria-id" method="POST" class="containerSearchId cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por ID</label>
+                    <input type="number" name="id" class="formInput" placeholder="Digite o ID da categoria">
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
-            <!-- pesquisa por nome -->
-            <form action="/pesquisar-categoria-nome" method="POST" class="containerSearchName">
-                <div>
-                    <label>Buscar por nome</label>
-                    <input type="text" name="nome" placeholder="Digite o nome da categoria">
+            <form action="/pesquisar-categoria-nome" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por nome</label>
+                    <input type="text" name="nome" class="formInput" placeholder="Digite o nome da categoria">
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
+
         </div>
     </div>
-    <!-- link para exibir todas -->
-    <a href="{{ url_for('cat.categorias') }}">Exibir todas categorias</a>
-    <!-- tabela com resultados -->
-    <table>
-        <tr>
+
+    <a href="{{ url_for('cat.categorias') }}" class="showAllLink">Exibir todas categorias</a>
+
+    <table class="tableCategories">
+        <tr class="tableRowTop">
             <th class="tableTopID">ID</th>
             <th class="tableTopCategory">CATEGORIA</th>
             <th class="tableTopAction">AÇÃO</th>
         </tr>
 
         {% for cat in categorias %}
-        <tr>
-            <td>{{ cat.IDCATEGORIA }}</td>
-            <td>{{ cat.NOME }}</td>
-            <td>
-                <!-- botão deletar -->
+        <tr class="tableRow">
+            <td class="tableCell">{{ cat.IDCATEGORIA }}</td>
+            <td class="tableCell">{{ cat.NOME }}</td>
+            <td class="tableCell tableActionCell">
                 <form action="{{ url_for('cat.deletarcategoria', id=cat.IDCATEGORIA) }}" method="GET">
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar esta categoria?')">DELETAR</button>
+                    <button type="submit" class="btn btnDelete" onclick="return confirm('Tem certeza que deseja deletar esta categoria?')">DELETAR</button>
                 </form>
             </td>
         </tr>

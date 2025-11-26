@@ -2,120 +2,124 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <!-- fonte -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-    <!-- css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='produtos.css') }}">
     <title>Produtos</title>
 </head>
 
 <body>
 
-    <!-- menu principal -->
-    <header>
-        <nav>
-            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
-            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
-            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
-            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
-            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
-            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+    <!-- ======================= NAV ======================= -->
+    <header class="header">
+        <nav class="navbar">
+            <li><a href="{{ url_for('main.paginaprincipal') }}" class="navbarLink">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}" class="navbarLink">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
         </nav>
     </header>
 
-    <!-- container geral -->
-    <div>
+    <!-- ======================= CONTAINER GERAL ======================= -->
+    <div class="containerGeneral">
 
-        <!-- formulário de cadastro -->
-        <form action="/cadastrar-produtos" method="POST">
-            <h1>Cadastrar produto</h1>
+        <!-- ======================= FORMULÁRIO DE CADASTRO ======================= -->
+        <form action="/cadastrar-produtos" method="POST" class="containerAdd cardForm">
+            <h1 class="titleAdd">Cadastrar produto</h1>
 
-            <div>
-                <label>Produto</label>
-                <input type="text" name="nome" placeholder="Insira o produto" required>
-
-                <label>ID categoria</label>
-                <input type="text" name="idcategoria" placeholder="Insira o ID da categoria" required>
-
-                <label>Descrição</label>
-                <input type="text" name="descricao" placeholder="Insira a descrição do produto" required>
-
-                <label>Controle de validade</label>
-                <input type="text" name="controlevalidade" placeholder="Insira a validade" required>
-
-                <label>Estoque mínimo</label>
-                <input type="number" name="estoqueminimo" placeholder="Insira o estoque mínimo" required>
+            <div class="formGroup">
+                <label class="formLabel">Produto</label>
+                <input type="text" name="nome" class="formInput" placeholder="Insira o nome do produto" required>
             </div>
 
-            <button type="submit">Confirmar</button>
-            <a href="{{ url_for('pro.produtos') }}">Exibir todos produtos</a>
+            <div class="formGroup">
+                <label class="formLabel">ID Categoria</label>
+                <input type="number" name="idcategoria" class="formInput" placeholder="Insira o ID da categoria" required>
+            </div>
+
+            <div class="formGroup">
+                <label class="formLabel">Descrição</label>
+                <input type="text" name="descricao" class="formInput" placeholder="Insira a descrição do produto" required>
+            </div>
+
+            <div class="formGroup">
+                <label class="formLabel">Controle de validade</label>
+                <input type="text" name="controlevalidade" class="formInput" placeholder="Insira a validade" required>
+            </div>
+
+            <div class="formGroup">
+                <label class="formLabel">Estoque mínimo</label>
+                <input type="number" name="estoqueminimo" class="formInput" placeholder="Insira o estoque mínimo" required>
+            </div>
+
+            <button type="submit" class="btn btnPrimary">Confirmar</button>
         </form>
 
-        <!-- área de pesquisa -->
-        <div>
+        <!-- ======================= ÁREA DE PESQUISA ======================= -->
+        <div class="containerSearch">
 
-            <!-- buscar por id -->
-            <form action="/pesquisar-produto-id" method="POST">
-                <h1>Buscar produto</h1>
-
-                <div>
-                    <label>Pesquisa por ID</label>
-                    <input type="number" name="id" placeholder="Digite o ID do produto">
+            <!-- Buscar por ID -->
+            <form action="/pesquisar-produto-id" method="POST" class="containerSearchId cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por ID</label>
+                    <input type="number" name="id" class="formInput" placeholder="Digite o ID do produto">
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
-            <!-- buscar por nome -->
-            <form action="/pesquisar-produto-nome" method="POST">
-                <div>
-                    <label>Pesquisa por nome</label>
-                    <input type="text" name="nome" placeholder="Digite o nome do produto">
+            <!-- Buscar por nome -->
+            <form action="/pesquisar-produto-nome" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por nome</label>
+                    <input type="text" name="nome" class="formInput" placeholder="Digite o nome do produto">
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
-            <!-- buscar por categoria -->
-            <form action="/pesquisar-produto-categoria" method="POST">
-                <div>
-                    <label>Pesquisa por categoria</label>
-                    <input type="number" name="idcategoria" placeholder="Digite o ID categoria do produto">
+            <!-- Buscar por categoria -->
+            <form action="/pesquisar-produto-categoria" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por categoria</label>
+                    <input type="number" name="idcategoria" class="formInput" placeholder="Digite o ID da categoria">
                 </div>
-
-                <button type="submit">Confirmar</button>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
+
         </div>
     </div>
 
-    <!-- tabela de produtos -->
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>CATEGORIA</th>
-            <th>PRODUTO</th>
-            <th>DESCRICAO</th>
-            <th>CONTROLE VALIDADE</th>
-            <th>ESTOQUE MINIMO</th>
-            <th>AÇÃO</th>
+    <!-- ======================= LINK DE EXIBIR TODOS ======================= -->
+    <a href="{{ url_for('pro.produtos') }}" class="showAllLink">Exibir todos produtos</a>
+
+    <!-- ======================= TABELA ======================= -->
+    <table class="tableCategories">
+        <tr class="tableRowTop">
+            <th class="tableTopID">ID</th>
+            <th class="tableTopCategory">CATEGORIA</th>
+            <th class="tableTopCategory">PRODUTO</th>
+            <th class="tableTopCategory">DESCRIÇÃO</th>
+            <th class="tableTopCategory">VALIDADE</th>
+            <th class="tableTopCategory">ESTOQUE MIN</th>
+            <th class="tableTopAction">AÇÃO</th>
         </tr>
 
         {% for pro in produtos %}
-        <tr>
-            <td>{{ pro.IDPRODUTO }}</td>
-            <td>{{ pro.IDCATEGORIA }}</td>
-            <td>{{ pro.NOME }}</td>
-            <td>{{ pro.DESCRICAO }}</td>
-            <td>{{ pro.CONTROLE_VALIDADE }}</td>
-            <td>{{ pro.ESTOQUE_MINIMO }}</td>
-            <td>
-                <!-- botões de ação -->
+        <tr class="tableRow">
+            <td class="tableCell">{{ pro.IDPRODUTO }}</td>
+            <td class="tableCell">{{ pro.IDCATEGORIA }}</td>
+            <td class="tableCell">{{ pro.NOME }}</td>
+            <td class="tableCell">{{ pro.DESCRICAO }}</td>
+            <td class="tableCell">{{ pro.CONTROLE_VALIDADE }}</td>
+            <td class="tableCell">{{ pro.ESTOQUE_MINIMO }}</td>
+
+            <td class="tableCell tableActionCell">
                 <form action="{{ url_for('pro.deletarproduto', id=pro.IDPRODUTO) }}" method="GET">
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este produto?')">DELETAR</button>
+                    <button class="btn btnDelete" onclick="return confirm('Tem certeza que deseja deletar este produto?')">DELETAR</button>
                 </form>
 
                 <form action="{{ url_for('pro.alterarproduto', id=pro.IDPRODUTO) }}" method="GET">
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja alterar este produto?')">ALTERAR</button>
+                    <button class="btn btnEdit" onclick="return confirm('Tem certeza que deseja alterar este produto?')">ALTERAR</button>
                 </form>
             </td>
         </tr>

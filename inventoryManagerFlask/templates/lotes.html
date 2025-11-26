@@ -2,117 +2,129 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Lotes</title>
-    <!-- fonte -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-    <!-- css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='lotes.css') }}">
+    <title>Lotes</title>
 </head>
 
 <body>
 
-    <!-- Menu superior -->
-    <header>
-        <nav>
-            <li><a href="{{ url_for('main.paginaprincipal') }}">Página principal</a></li>
-            <li><a href="{{ url_for('cat.categorias') }}">Categorias</a></li>
-            <li><a href="{{ url_for('pro.produtos') }}">Produtos</a></li>
-            <li><a href="{{ url_for('forn.fornecedores') }}">Fornecedores</a></li>
-            <li><a href="{{ url_for('lote.lotes') }}">Lotes</a></li>
-            <li><a href="{{ url_for('mov.movimentacoes') }}">Movimentações</a></li>
+    <header class="header">
+        <nav class="navbar">
+            <li><a href="{{ url_for('main.paginaprincipal') }}" class="navbarLink">Página principal</a></li>
+            <li><a href="{{ url_for('cat.categorias') }}" class="navbarLink">Categorias</a></li>
+            <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
         </nav>
     </header>
 
-    <!-- Área principal -->
-    <div>
+    <div class="containerGeneral">
 
-        <!-- Cadastrar lote -->
-        <form action="/cadastrar-lote" method="POST">
-            <h1>Cadastrar lote</h1>
+        <!-- CARD DE CADASTRAR LOTE -->
+        <form action="/cadastrar-lote" method="POST" class="containerAdd cardForm">
+            <h1 class="titleAdd">Cadastrar lote</h1>
 
-            <label>ID Produto</label>
-            <input type="number" name="idproduto" required placeholder="Insira o ID do produto">
+            <div class="formGroup">
+                <label class="formLabel">ID Produto</label>
+                <input type="number" name="idproduto" class="formInput" placeholder="Insira o ID do produto" required>
+            </div>
 
-            <label>ID Fornecedor</label>
-            <input type="number" name="idfornecedor" required placeholder="Insira o ID do fornecedor">
+            <div class="formGroup">
+                <label class="formLabel">ID Fornecedor</label>
+                <input type="number" name="idfornecedor" class="formInput" placeholder="Insira o ID do fornecedor" required>
+            </div>
 
-            <label>Data de cadastro</label>
-            <input type="date" name="datacadastro" required>
+            <div class="formGroup">
+                <label class="formLabel">Data de cadastro</label>
+                <input type="date" name="datacadastro" class="formInput" required>
+            </div>
 
-            <label>Data de validade</label>
-            <input type="date" name="datavalidade" required>
+            <div class="formGroup">
+                <label class="formLabel">Data de validade</label>
+                <input type="date" name="datavalidade" class="formInput" required>
+            </div>
 
-            <label>Número do lote</label>
-            <input type="text" name="numero" required placeholder="Ex: L2024-01">
+            <div class="formGroup">
+                <label class="formLabel">Número do lote</label>
+                <input type="text" name="numero" class="formInput" placeholder="Ex: L2024-01" required>
+            </div>
 
-            <label>Quantidade</label>
-            <input type="number" name="quantidade" placeholder="Insira a quantidade">
+            <div class="formGroup">
+                <label class="formLabel">Quantidade</label>
+                <input type="number" name="quantidade" class="formInput" placeholder="Insira a quantidade">
+            </div>
 
-            <button type="submit">Confirmar</button>
-
-            <a href="{{ url_for('lote.lotes') }}">Exibir todos lotes</a>
+            <button type="submit" class="btn btnPrimary">Confirmar</button>
         </form>
 
-        <!-- Pesquisas -->
-        <div>
+        <!-- CARD DE BUSCAS -->
+        <div class="containerSearch">
 
             <!-- Buscar por ID -->
-            <form action="/pesquisar-lote-id" method="POST">
-                <h1>Buscar lote</h1>
-
-                <label>Pesquisa por ID</label>
-                <input type="number" name="id" placeholder="Digite o ID do lote">
-
-                <button type="submit">Confirmar</button>
+            <form action="/pesquisar-lote-id" method="POST" class="containerSearchId cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por ID</label>
+                    <input type="number" name="id" class="formInput" placeholder="Digite o ID do lote">
+                </div>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
             <!-- Buscar por produto -->
-            <form action="/pesquisar-lote-produto" method="POST">
-                <label>Pesquisa por ID Produto</label>
-                <input type="number" name="idproduto" placeholder="Digite o ID do produto">
-                <button type="submit">Confirmar</button>
+            <form action="/pesquisar-lote-produto" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por ID Produto</label>
+                    <input type="number" name="idproduto" class="formInput" placeholder="Digite o ID do produto">
+                </div>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
             <!-- Buscar por fornecedor -->
-            <form action="/pesquisar-lote-fornecedor" method="POST">
-                <label>Pesquisa por ID Fornecedor</label>
-                <input type="number" name="idfornecedor" placeholder="Digite o ID do fornecedor">
-                <button type="submit">Confirmar</button>
+            <form action="/pesquisar-lote-fornecedor" method="POST" class="containerSearchName cardForm">
+                <div class="formGroup">
+                    <label class="formLabel">Buscar por ID Fornecedor</label>
+                    <input type="number" name="idfornecedor" class="formInput" placeholder="Digite o ID do fornecedor">
+                </div>
+                <button type="submit" class="btn btnPrimary">Confirmar</button>
             </form>
 
         </div>
     </div>
 
-    <!-- Tabela de lotes -->
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>ID PRODUTO</th>
-            <th>ID FORNECEDOR</th>
-            <th>DATA CADASTRO</th>
-            <th>DATA VALIDADE</th>
-            <th>NÚMERO</th>
-            <th>QUANTIDADE</th>
-            <th>AÇÃO</th>
+    <a href="{{ url_for('lote.lotes') }}" class="showAllLink">Exibir todos lotes</a>
+
+    <table class="tableCategories">
+        <tr class="tableRowTop">
+            <th class="tableTopID">ID</th>
+            <th class="tableTopCategory">ID PRODUTO</th>
+            <th class="tableTopCategory">ID FORNECEDOR</th>
+            <th class="tableTopCategory">DATA CADASTRO</th>
+            <th class="tableTopCategory">DATA VALIDADE</th>
+            <th class="tableTopCategory">NÚMERO</th>
+            <th class="tableTopCategory">QUANTIDADE</th>
+            <th class="tableTopAction">AÇÃO</th>
         </tr>
 
         {% for lot in lotes %}
-        <tr>
-            <td>{{ lot.IDLOTE }}</td>
-            <td>{{ lot.IDPRODUTO }}</td>
-            <td>{{ lot.IDFORNECEDOR }}</td>
-            <td>{{ lot.DATA_CADASTRO }}</td>
-            <td>{{ lot.DATA_VALIDADE }}</td>
-            <td>{{ lot.NUMERO }}</td>
-            <td>{{ lot.QUANTIDADE }}</td>
+        <tr class="tableRow">
+            <td class="tableCell">{{ lot.IDLOTE }}</td>
+            <td class="tableCell">{{ lot.IDPRODUTO }}</td>
+            <td class="tableCell">{{ lot.IDFORNECEDOR }}</td>
+            <td class="tableCell">{{ lot.DATA_CADASTRO }}</td>
+            <td class="tableCell">{{ lot.DATA_VALIDADE }}</td>
+            <td class="tableCell">{{ lot.NUMERO }}</td>
+            <td class="tableCell">{{ lot.QUANTIDADE }}</td>
 
-            <td>
+            <td class="tableCell tableActionCell">
                 <form action="{{ url_for('lote.deletarlote', id=lot.IDLOTE) }}" method="GET">
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este lote?')">DELETAR</button>
+                    <button type="submit" class="btn btnDelete"
+                        onclick="return confirm('Tem certeza que deseja deletar este lote?')">DELETAR</button>
                 </form>
 
                 <form action="{{ url_for('lote.alterarlote', id=lot.IDLOTE) }}" method="GET">
-                    <button type="submit" onclick="return confirm('Tem certeza que deseja alterar este lote?')">ALTERAR</button>
+                    <button type="submit" class="btn btnPrimary"
+                        onclick="return confirm('Tem certeza que deseja alterar este lote?')">ALTERAR</button>
                 </form>
             </td>
         </tr>
