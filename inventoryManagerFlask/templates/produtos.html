@@ -14,7 +14,6 @@
         <nav class="navbar">
             <li><a href="{{ url_for('main.paginaprincipal') }}" class="navbarLink">Página principal</a></li>
             <li><a href="{{ url_for('cat.categorias') }}" class="navbarLink">Categorias</a></li>
-            <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
             <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
             <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
             <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
@@ -26,7 +25,7 @@
 
         <!-- ======================= FORMULÁRIO DE CADASTRO ======================= -->
         <form action="/cadastrar-produtos" method="POST" class="containerAdd cardForm">
-            <h1 class="titleAdd">Cadastrar produto</h1>
+            <h1 class="titleAdd">Cadastrar Produto</h1>
 
             <div class="formGroup">
                 <label class="formLabel">Produto</label>
