@@ -34,7 +34,10 @@ def cadastrarmovimentacao():
         tipo = request.form.get("tipo")
         quantidade = request.form.get("quantidade")
         idlote = request.form.get("idlote")
+        idusuario = request.form.get("idusuario")
         data = request.form.get("data")
+        valor = request.form.get("valor")
+        motivo = request.form.get("motivo")
 
         conn = conexao()
         cursor = None
@@ -45,9 +48,9 @@ def cadastrarmovimentacao():
         try:
             cursor = conn.cursor(dictionary=True)
             cursor.execute("""
-                INSERT INTO MOVIMENTACAO (TIPO, QUANTIDADE, IDLOTE, DATA_MOV)
-                VALUES (%s, %s, %s, %s)
-            """, (tipo, quantidade, idlote, data))
+                INSERT INTO MOVIMENTACAO (TIPO, QUANTIDADE, VALOR_UNITARIO, MOTIVO, IDLOTE, IDUSUARIO, DATA_MOVIMENTOCAO)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """, (tipo, quantidade, valor, motivo, idlote, idusuario, data))
             conn.commit()
 
         finally:

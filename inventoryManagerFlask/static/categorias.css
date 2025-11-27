@@ -91,15 +91,10 @@ li {
 .formInput {
     padding: 10px;
     border-radius: 8px;
+    border: 2px solid #8F6FBF;
     outline: none;
     background-color: white;
-    color: #000000;
-    border: 0;
-
-}
-
-.formInput:not(:placeholder-shown) {
-    border: 2.5px solid #8F6FBF;
+    color: #522A92;
 }
 
 /* BOTÕES */
@@ -133,10 +128,9 @@ li {
 /* LINK "EXIBIR TODAS" */
 .showAllLink {
     color: aliceblue;
-    margin-left: 5%;
+    margin-left: 40px;
     text-decoration: none;
     font-size: 17px;
-    text-align: center;
 }
 
 .showAllLink:hover {
@@ -151,6 +145,10 @@ li {
     background-color: aliceblue;
     border-radius: 12px;
     overflow: hidden;
+}
+
+.tableTopAction {
+    width: 5%;
 }
 
 .tableRowTop {

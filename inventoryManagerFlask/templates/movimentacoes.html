@@ -17,6 +17,7 @@
             <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
             <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
             <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
+            <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
         </nav>
     </header>
 
@@ -127,7 +128,7 @@
             <th>ID</th>
             <th>ID LOTE</th>
             <th>ID USUÁRIO</th>
-            <th>DATA</th>
+            <th class="tableTopDate">DATA</th>
             <th>TIPO</th>
             <th>QUANTIDADE</th>
             <th>VALOR UNITÁRIO</th>
@@ -140,7 +141,7 @@
             <td class="tableCell">{{ mov.IDMOVIMENTACAO }}</td>
             <td class="tableCell">{{ mov.IDLOTE }}</td>
             <td class="tableCell">{{ mov.IDUSUARIO }}</td>
-            <td class="tableCell">{{ mov.DATA_MOVIMENTACAO }}</td>
+            <td class="tableCell">{{ mov.DATA_MOVIMENTOCAO }}</td>
             <td class="tableCell">{{ mov.TIPO }}</td>
             <td class="tableCell">{{ mov.QUANTIDADE }}</td>
             <td class="tableCell">{{ mov.VALOR_UNITARIO }}</td>

@@ -5,7 +5,7 @@
     <!-- fonte -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='editarmovimentacao.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='alterar.css') }}">
     <title>Alterar Movimentação</title>
 </head>
 
@@ -15,7 +15,7 @@
     <div>
 
         <!-- formulário para editar movimentação -->
-        <form action="{{ url_for('mov.alterarmovimentacao_post', id=mov.IDMOVIMENTACAO) }}" method="POST">
+        <form action="{{ url_for('mov.alterarmov_post', id=mov.IDMOVIMENTACAO) }}" method="POST">
             <h1>Alterar Movimentação</h1>
 
             <!-- campos do formulário -->

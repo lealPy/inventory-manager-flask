@@ -1,0 +1,89 @@
+/* ==================== BASE ==================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #272731; /* fundo escuro */
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ==================== CONTAINER PRINCIPAL ==================== */
+
+body > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* ==================== FORM ==================== */
+
+form {
+    background-color: aliceblue; /* card claro */
+    padding: 40px 35px;
+    border-radius: 14px;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.45);
+}
+
+form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #522A92; /* roxo principal */
+    font-size: 26px;
+}
+
+/* ==================== INPUTS ==================== */
+
+form label {
+    font-size: 15px;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    color: #522A92; /* roxo principal */
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: #522A92;
+    font-size: 15px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.10) inset;
+}
+
+/* ==================== BOTÃO ==================== */
+
+button {
+    margin-top: 25px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #7048B0; /* roxo médio */
+    color: white;
+    font-size: 17px;
+    transition: 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: #8F6FBF; /* roxo claro */
+}
+
+/* ==================== RESPONSIVO ==================== */
+
+@media (max-width: 480px) {
+    form {
+        width: 90%;
+        padding: 30px;
+    }
+}

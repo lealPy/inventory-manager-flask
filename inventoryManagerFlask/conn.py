@@ -11,7 +11,11 @@ def conexao():
         host= os.getenv("DB_HOST"),
         user= os.getenv("DB_USER"),
         password= os.getenv("DB_PASSWORD"),
+        port= os.getenv("DB_PORT"),
         auth_plugin= os.getenv("DB_AUTH_PLUGIN"),
+        connection_timeout= os.getenv("DB_CONNECTION_TIMEOUT"),
+        use_pure= os.getenv("DB_USE_PURE"),
+        ssl_disabled= os.getenv("DB_SSL_DISABLED"),
         database= os.getenv("DB_NAME")
     )
 

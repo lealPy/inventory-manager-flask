@@ -15,6 +15,7 @@
             <li><a href="{{ url_for('cat.categorias') }}" class="navbarLink">Categorias</a></li>
             <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
             <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
+            <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
             <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
         </nav>
     </header>
@@ -23,7 +24,7 @@
 
         <!-- CARD DE CADASTRAR LOTE -->
         <form action="/cadastrar-lote" method="POST" class="containerAdd cardForm">
-            <h1 class="titleAdd">Cadastrar Lote</h1>
+            <h1 class="titleAdd">Cadastrar lote</h1>
 
             <div class="formGroup">
                 <label class="formLabel">ID Produto</label>

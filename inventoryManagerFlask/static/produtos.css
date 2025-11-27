@@ -91,15 +91,10 @@ li {
 .formInput {
     padding: 10px;
     border-radius: 8px;
+    border: 2px solid #8F6FBF;
     outline: none;
     background-color: white;
-    color: #000000;
-    border: 0;
-
-}
-
-.formInput:not(:placeholder-shown) {
-    border: 2.5px solid #8F6FBF;
+    color: #522A92;
 }
 
 /* BOTÕES */
@@ -124,10 +119,20 @@ li {
 .btnDelete {
     background-color: #A52A2A;
     color: white;
+    margin-bottom: 5px;
 }
 
 .btnDelete:hover {
     background-color: #7a1f1f;
+}
+
+.btnEdit {
+    background-color: #7048B0;
+    color: white;
+}
+
+.btnEdit:hover {
+    background-color: #7f60ad;
 }
 
 /* LINK "EXIBIR TODAS" */
@@ -136,7 +141,6 @@ li {
     margin-left: 40px;
     text-decoration: none;
     font-size: 17px;
-    margin-left: 5%;
 }
 
 .showAllLink:hover {
@@ -151,6 +155,11 @@ li {
     background-color: aliceblue;
     border-radius: 12px;
     overflow: hidden;
+}
+
+.tableTopAction {
+    padding-left: 10px;
+    width: 5%;
 }
 
 .tableRowTop {

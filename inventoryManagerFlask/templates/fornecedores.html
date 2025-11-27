@@ -15,6 +15,7 @@
             <li><a href="{{ url_for('main.paginaprincipal') }}" class="navbarLink">Página principal</a></li>
             <li><a href="{{ url_for('cat.categorias') }}" class="navbarLink">Categorias</a></li>
             <li><a href="{{ url_for('pro.produtos') }}" class="navbarLink">Produtos</a></li>
+            <li><a href="{{ url_for('forn.fornecedores') }}" class="navbarLink">Fornecedores</a></li>
             <li><a href="{{ url_for('lote.lotes') }}" class="navbarLink">Lotes</a></li>
             <li><a href="{{ url_for('mov.movimentacoes') }}" class="navbarLink">Movimentações</a></li>
         </nav>
@@ -25,7 +26,7 @@
 
         <!-- FORMULÁRIO CADASTRO -->
         <form action="/cadastrar-fornecedor" method="POST" class="containerAdd cardForm">
-            <h1 class="titleAdd">Cadastrar Fornecedor</h1>
+            <h1 class="titleAdd">Cadastrar fornecedor</h1>
 
             <div class="formGroup">
                 <label class="formLabel">Nome</label>
