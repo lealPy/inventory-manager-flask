@@ -75,9 +75,9 @@
     <table class="tableCategories">
         <tr class="tableRowTop">
             <th class="tableTopID">ID</th>
-            <th class="tableTopCategory">NOME</th>
-            <th class="tableTopCategory">TELEFONE</th>
-            <th class="tableTopCategory">EMAIL</th>
+            <th class="tableTopName">NOME</th>
+            <th class="tableTopPhone">TELEFONE</th>
+            <th class="tableTopEmail">EMAIL</th>
             <th class="tableTopAction">AÇÃO</th>
         </tr>
 
@@ -95,8 +95,7 @@
                 </form>
 
                 <form action="{{ url_for('forn.alterarfornecedor', id=f.IDFORNECEDOR) }}" method="GET">
-                    <button type="submit" class="btn btnEdit"
-                        onclick="return confirm('Tem certeza que deseja alterar este fornecedor?')">ALTERAR</button>
+                    <button type="submit" class="btn btnEdit">ALTERAR</button>
                 </form>
             </td>
         </tr>

@@ -64,7 +64,7 @@
 
         {% for cat in categorias %}
         <tr class="tableRow">
-            <td class="tableCell">{{ cat.IDCATEGORIA }}</td>
+            <td class="tableCellID">{{ cat.IDCATEGORIA }}</td>
             <td class="tableCell">{{ cat.NOME }}</td>
             <td class="tableCell tableActionCell">
                 <form action="{{ url_for('cat.deletarcategoria', id=cat.IDCATEGORIA) }}" method="GET">

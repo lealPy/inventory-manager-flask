@@ -119,21 +119,20 @@
         </div>
     </div>
 
-    <!-- BOTÃO LISTAR TODOS -->
     <a href="{{ url_for('mov.movimentacoes') }}" class="showAllLink">Exibir todas movimentações</a>
 
     <!-- TABELA -->
     <table class="tableCategories">
         <tr class="tableRowTop">
-            <th>ID</th>
-            <th>ID LOTE</th>
-            <th>ID USUÁRIO</th>
+            <th class="tableTopID">ID</th>
+            <th class="tableTopLote">ID LOTE</th>
+            <th class="tableTopUser">ID USUÁRIO</th>
             <th class="tableTopDate">DATA</th>
-            <th>TIPO</th>
-            <th>QUANTIDADE</th>
-            <th>VALOR UNITÁRIO</th>
-            <th>MOTIVO</th>
-            <th>AÇÃO</th>
+            <th class="tableTopType">TIPO</th>
+            <th class="tableTopQuant">QUANTIDADE</th>
+            <th class="tableTopValor">VALOR UNITÁRIO</th>
+            <th class="tableTopReason">MOTIVO</th>
+            <th class="tableTopAction">AÇÃO</th>
         </tr>
 
         {% for mov in movimentacoes %}

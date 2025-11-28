@@ -97,10 +97,10 @@
         <tr class="tableRowTop">
             <th class="tableTopID">ID</th>
             <th class="tableTopCategory">CATEGORIA</th>
-            <th class="tableTopCategory">PRODUTO</th>
-            <th class="tableTopCategory">DESCRIÇÃO</th>
-            <th class="tableTopCategory">VALIDADE</th>
-            <th class="tableTopCategory">ESTOQUE MIN</th>
+            <th class="tableTopProduct">PRODUTO</th>
+            <th class="tableTopDesc">DESCRIÇÃO</th>
+            <th class="tableTopValid">VALIDADE</th>
+            <th class="tableTopStock">ESTOQUE</th>
             <th class="tableTopAction">AÇÃO</th>
         </tr>
 
@@ -119,7 +119,7 @@
                 </form>
 
                 <form action="{{ url_for('pro.alterarproduto', id=pro.IDPRODUTO) }}" method="GET">
-                    <button class="btn btnEdit" onclick="return confirm('Tem certeza que deseja alterar este produto?')">ALTERAR</button>
+                    <button class="btn btnEdit">ALTERAR</button>
                 </form>
             </td>
         </tr>

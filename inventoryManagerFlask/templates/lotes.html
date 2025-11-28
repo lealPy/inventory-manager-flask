@@ -97,12 +97,12 @@
     <table class="tableCategories">
         <tr class="tableRowTop">
             <th class="tableTopID">ID</th>
-            <th class="tableTopCategory">ID PRODUTO</th>
-            <th class="tableTopCategory">ID FORNECEDOR</th>
-            <th class="tableTopCategory">DATA CADASTRO</th>
-            <th class="tableTopCategory">DATA VALIDADE</th>
-            <th class="tableTopCategory">NÚMERO</th>
-            <th class="tableTopCategory">QUANTIDADE</th>
+            <th class="tableTopProduct">ID PRODUTO</th>
+            <th class="tableTopSupplier">ID FORNECEDOR</th>
+            <th class="tableTopCad">DATA CADASTRO</th>
+            <th class="tableTopValid">DATA VALIDADE</th>
+            <th class="tableTopNumb">NÚMERO</th>
+            <th class="tableTopQuant">QUANTIDADE</th>
             <th class="tableTopAction">AÇÃO</th>
         </tr>
 
@@ -123,8 +123,7 @@
                 </form>
 
                 <form action="{{ url_for('lote.alterarlote', id=lot.IDLOTE) }}" method="GET">
-                    <button type="submit" class="btn btnPrimary"
-                        onclick="return confirm('Tem certeza que deseja alterar este lote?')">ALTERAR</button>
+                    <button type="submit" class="btn btnPrimary">ALTERAR</button>
                 </form>
             </td>
         </tr>
