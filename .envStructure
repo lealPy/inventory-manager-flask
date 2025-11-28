@@ -1,7 +1,7 @@
 Versão Completa (caso conexão com mySQL não funcione):
 DB_HOST="seuHost"
 DB_USER="seuUser"
-DB_PASSWORD="#suaSenha"
+DB_PASSWORD="suaSenha"
 DB_PORT="3306"
 DB_AUTH_PLUGIN="mysql_native_password"
 DB_TIMEOUT="3"
@@ -13,6 +13,6 @@ SECRET_TOKEN="tokenAleatório"
 Versão Básica (somente o necessário)
 DB_HOST="seuHost"
 DB_USER="seuUser"
-DB_PASSWORD="#suaSenha"
+DB_PASSWORD="suaSenha"
 DB_NAME="seuDatabase"
 SECRET_TOKEN="tokenAleatório"
